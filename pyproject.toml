@@ -1,0 +1,4 @@
+[tool.black]
+line-length = 79
+# Don't convert single-quotes to double-quotes
+skip-string-normalization = true
