@@ -12,7 +12,7 @@ class DateTimeSpanAsHoursTests(unittest.TestCase):
         self.assertEquals(4.0, span.as_hours)
 
 
-class DateTimeSpanTests(unittest.TestCase):
+class DateTimeSpanEqualityTests(unittest.TestCase):
     def test_equals(self):
         span_1 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
@@ -51,11 +51,10 @@ class DateTimeSpanTests(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertNotEqual(span_1, span_2)
 
 
-class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
+class DateTimeSpanStrictlyWithinTests(unittest.TestCase):
     def test_is_strictly_within_pass(self):
         span_1 = DateTimeSpan(
             datetime(2016, 3, 28, 1), datetime(2016, 3, 28, 3),
@@ -64,7 +63,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertTrue(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_same_start(self):
@@ -75,7 +73,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_same_end(self):
@@ -86,7 +83,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_start_before(self):
@@ -97,7 +93,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 2), datetime(2016, 3, 28, 4),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_end_after(self):
@@ -108,7 +103,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 3),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_start_befor_and_end_after(self):
@@ -119,7 +113,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 1), datetime(2016, 3, 28, 3),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_start_and_end_exactly_same_time(self):
@@ -130,7 +123,6 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertFalse(span_1.is_strictly_within(span_2))
 
     def test_is_strictly_within_no_overlap(self):
@@ -144,7 +136,7 @@ class DateTimeSpanTestsStrictlyWithin(unittest.TestCase):
         self.assertFalse(span_1.is_strictly_within(span_2))
 
 
-class DateTimeSpanTestsIntersects(unittest.TestCase):
+class DateTimeSpanIntersectsTests(unittest.TestCase):
     def test_intersects_pass(self):
         span_1 = DateTimeSpan(
             datetime(2016, 3, 28, 1), datetime(2016, 3, 28, 3),
@@ -153,7 +145,6 @@ class DateTimeSpanTestsIntersects(unittest.TestCase):
         span_2 = DateTimeSpan(
             datetime(2016, 3, 28, 0), datetime(2016, 3, 28, 4),
         )
-
         self.assertTrue(span_1.intersects(span_2))
         self.assertTrue(span_2.intersects(span_1))
 
